@@ -27,14 +27,28 @@ const jimp = require('jimp')
 
 clearConsole()
 
+let mapsizex = process.stdout.columns;
+let mapsizey = process.stdout.rows;
+
 jimp.read('world.jpg', (err, map_image) => {
   if (err) throw err;
-  map_image.resize(100,50);
-  console.log(map_image.getPixelColor(0,0)); //gibt die Farbe des Pixels links oben zurück
-  writeCharacterToConsole('#',0,0); //schreibt ein # links oben in die Konsole
+  map_image.resize(mapsizex, mapsizey).greyscale().contrast(1).posterize(2);
+  let x = 0;
+  let y = 0;  
 
-  //----- Hier kommt euer Code hin -----
-  
+  for (x = 0; x < mapsizex + 1; x++) {
+    let color = map_image.getPixelColor(x, y);
+    if (color > 300) {
+      writeCharacterToConsole('#', x, y);
+    }
+    if (x === mapsizex) {
+      x = -1
+      y++
+    }
+    if (y === mapsizey + 1) {
+      return;
+    }
+  }
 
 
 });
