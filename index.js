@@ -24,23 +24,25 @@
 
 const rl = require('readline')
 const jimp = require('jimp')
+const chalk = require('chalk');
 
 clearConsole()
 
 let mapsizex = process.stdout.columns;
 let mapsizey = process.stdout.rows;
 
-jimp.read('world.jpg', (err, map_image) => {
+jimp.read('hollowknightsteamprofile.jpg', (err, map_image) => { 
+  
   if (err) throw err;
-  map_image.resize(mapsizex, mapsizey).greyscale().contrast(1).posterize(2);
+  map_image.resize(mapsizex, mapsizey);
   let x = 0;
   let y = 0;  
 
   for (x = 0; x < mapsizex + 1; x++) {
-    let color = map_image.getPixelColor(x, y);
-    if (color > 300) {
-      writeCharacterToConsole('#', x, y);
-    }
+    if (map_image.getPixelColor(x, y));
+    let rgba = jimp.intToRGBA(map_image.getPixelColor(x,y));
+    writeCharacterToConsole(chalk.rgb(rgba.r, rgba.g, rgba.b)('■'), x, y);
+    
     if (x === mapsizex) {
       x = -1
       y++
@@ -49,8 +51,6 @@ jimp.read('world.jpg', (err, map_image) => {
       return;
     }
   }
-
-
 });
 
 
@@ -76,3 +76,7 @@ function writeCharacterToConsole (char, x, y) {
   rl.cursorTo(process.stdout,x,y)
   process.stdout.write(char)
 }
+
+// ▦
+// ◪
+// ■
