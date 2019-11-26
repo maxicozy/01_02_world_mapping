@@ -1,6 +1,6 @@
 /*
  * WORLD MAP VISUALIZER
- * Author: <your name here>
+ * Author: Maximilian Becht
  * ---------------------------
  *
  * Visualizing the world!
