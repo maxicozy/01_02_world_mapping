@@ -22,6 +22,7 @@
  *
  */
 
+
 const rl = require('readline')
 const jimp = require('jimp')
 const chalk = require('chalk');
@@ -53,9 +54,30 @@ jimp.read('hollowknightsteamprofile.jpg', (err, map_image) => {
   }
 });
 
+// function generateInvader (width, height, xPos, yPos) {
+//   for (let x = 0; x < width; x++) {
+//     for (let y = 0; y < height; y++) {
+//       let randomNumber = Math.random();
+//       if (randomNumber >= 0.5) {
+//         let h = 300;
+//         let s = Math.floor(Math.random() * 100);
+//         let v = Math.floor(Math.random() * 100);
+//         writeCharacterToConsole(chalk.hsv(h, s, v) ('◼'), x + xPos, y + yPos)
+//         writeCharacterToConsole(chalk.hsv(h, s, v) ('◼'), (2 * width - x) + xPos, y + yPos)
+//       }
+//     }
+//   } rl.cursorTo(process.stdout, 100, 100)
+// }
+//
+// setInterval(function () {
+//   const xPos = Math.floor(Math.random() * 200);
+//   const yPos = Math.floor(Math.random() * 50);
+//   clearConsole();
+//   generateInvader(10, 5, xPos, yPos);
+// }, 1000);
 
 
-//Vorerst nur ein Platzhalter
+// Vorerst nur ein Platzhalter
 setInterval(function () {
     
 },1000);
